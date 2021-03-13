@@ -220,6 +220,8 @@ export function __compile(markdownString) {
 }
 ```
 
+可以看到，我们做了一层包装，使得函数调用起来是 TypeScript 的，非常干净．
+
 ## 总结
 
 Markdown 和 PDF 方案都有各自的好处，本站将会同时应用这两种方案．具体来说，对于像是教程，说明，文档这一类的，用 Markdown，对于稍微涉及到理论的，用 PDF.

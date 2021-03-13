@@ -16,18 +16,21 @@
 
     @include paperlike();
 
-    
+    @media (max-width: 960px) {
+        padding-top: 18px;
+        padding-bottom: 18px;
+        padding-left: 48px;
+        padding-right: 48px;
+    }
 
     @media (min-width: 900px) {
+        margin-top: 36px;
+        margin-bottom: 36px;
 
         padding-top: 72px;
         padding-bottom: 186px;
-
         padding-left: 96px;
         padding-right: 96px;
-        
-        margin-top: 36px;
-        margin-bottom: 36px;
     }
 
 
