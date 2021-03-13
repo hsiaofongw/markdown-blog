@@ -69,8 +69,6 @@ class Home extends React.Component<IHomeProps, {}> {
     }
 
     render() {
-        console.log("frontMatter:");
-        console.log(this.props.frontMatter);
         const title = this.props.frontMatter?.title || "无标题";
         const description = this.props.frontMatter?.description || "无摘要";
 
