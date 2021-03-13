@@ -1,10 +1,70 @@
-.paper {
-    max-width: 700px;
+@mixin heiti() {
+    font-family: "Hiragino Sans GB", "Noto Sans SC", 
+        sans-serif, monospace, system-ui;
+
+    // font-family: Menlo, Monaco, "Courier New", monospace;
+}
+
+@mixin paperlike() {
+    background-color: white;
+    max-width: 860px;
     margin-left: auto;
     margin-right: auto;
+}
 
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-top: 32px;
-    padding-bottom: 32px;
+.paper {
+
+    @include paperlike();
+
+    
+
+    @media (min-width: 900px) {
+
+        padding-top: 72px;
+        padding-bottom: 186px;
+
+        padding-left: 96px;
+        padding-right: 96px;
+        
+        margin-top: 36px;
+        margin-bottom: 36px;
+    }
+
+
+    @include heiti();
+
+    h1, h2, h3, p {
+        font-family: inherit;
+    }
+
+    h1 {
+        margin-top: 12rem;
+        margin-bottom: 12rem;
+    }
+
+    h2 {
+        margin-top: 4rem;
+        margin-bottom: 2rem;
+    }
+
+    p {
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    pre {
+        code {
+            display: block;
+            border-style: solid;
+            border-width: 2px;
+            border-color: #586e75;
+            padding: 0.5rem;
+            line-height: 1.75rem;
+            overflow: scroll;
+        }
+    }
 }

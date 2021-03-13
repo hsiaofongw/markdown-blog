@@ -1,6 +1,8 @@
 # 用 Markdown 写作
 
-我之前是用 PDF 写作的，如今也打算尝试下用 Markdown 写东西．
+*写于 2021 年 3 月 13 日：*
+
+博客的一些内容用 Markdown 写或许更合适．
 
 ## 用 Markdown 写作有什么好处？
 
@@ -24,6 +26,119 @@ Markdown 不能方便地自动编号，交叉引用等．
 
 主要是基于 remark/remark-react.js 方案，它能够自动地将 Markdow 文本信息转成 `React.Component`，这样 Markdown 写成的文章就可以方便地转成 HTML 了．
 
+## 显示图片的效果如何呢？
+
+可以让图片以 100% 的宽度显示：
+
+![第 2 张图片](/writing-in-markdown/2.png)
+
+## 显示代码的效果如何呢？
+
+可以让代码以 `block` 模式显示，并且加上边框，并为其设置等宽字体：
+
+```
+code {
+    font-family: Fira Code, Monaco, monospace;
+}
+
+.paper {
+    pre {
+        code {
+            display: block;
+            border-style: solid;
+            border-width: 2px;
+            border-color: #586e75;
+            padding: 0.5rem;
+            line-height: 1.75rem;
+            overflow: scroll;
+        }
+    }
+}
+```
+
+顺便说，设置图片宽度的代码：
+
+```
+.article {
+    p {
+        img {
+            width: 100%;
+        }
+    }
+}
+```
+
+## 显示数学公式的效果
+
+行内公式： \\( a \ne 0 \\)，代码：
+
+```
+行内公式： \\( a \ne 0 \\)，代码：
+```
+
+要输入两个反斜杠是因为 Markdown 本身的转义．
+
+换行公式：
+
+\\[
+f(a) = \frac{1}{2 \pi i}
+    \oint_{\gamma}
+    \frac{f(z)}{z - a} \mathrm{d} z 
+\\]
+
+代码：
+
+```
+\\[
+    f(a) = \frac{1}{2 \pi i}
+        \oint_{\gamma} \frac{f(z)}{z - a} \mathrm{d} z 
+\\]
+```
+
+可以看到，公式太长了分开写也是没问题的．
+
+带编号的换行公式：
+
+\begin{equation}
+    \mathrm{e}^{i \theta} = \cos \theta + i \sin \, \theta
+\end{equation}
+
+代码：
+
+```
+\begin{equation}
+    \mathrm{e}^{i \theta} = \cos \theta + i \sin \, \theta
+\end{equation}
+```
+
+可以看到，原来 Markdown 加上 MathJax, 实现带编号的换行公式也是可以的．
+
+另外，以下是截图：
+
+![第 3 张图片](/writing-in-markdown/3.png)
+
+可以看到右键点击数学公式是可以出现菜单的，MathJax 真的很强啊！
+
+## 怎么配置 MathJax 的？
+
+在 `head` 标签加入：
+
+```
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script src="/mathJaxConfig.js"></script>
+```
+
+其中，`mathJaxConfig.js` 的内容是：
+
+```
+window.MathJax = { tex: { tags: 'ams' } };
+```
+
+因为这些脚本是远程加载的，所以当网络不好的时候，数学公式也要花好处时间才能就位．
+
 ## 总结
 
-Markdown 和 PDF 方案都有各自的好处，本站将会同时应用这两种方案．不那么复杂的东西，我们一般会用 Markdown 来写，用 Markdown 不太好写的，我们可能会用 PDF．
+Markdown 和 PDF 方案都有各自的好处，本站将会同时应用这两种方案．具体来说，对于像是教程，说明，文档这一类的，用 Markdown，对于稍微涉及到理论的，用 PDF.

@@ -1,17 +1,24 @@
 import Head from 'next/head';
 import React from 'react';
-import { useRouter } from 'next/router';
 import fs from 'fs';
 import util from 'util';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { compile } from '../../helpers/markdowncompile';
 import styles from '../../styles/Post.module.scss';
+import { readdir } from 'fs/promises';
 
 export const getStaticPaths: GetStaticPaths = async () => {
+
+    const markdownPath = `${process.cwd()}/data/markdowns`;
+    const markdowns = await readdir(markdownPath);
+    const paths = markdowns.map(markdown => {
+        const markdownFilename = /^(?<postId>[\w\d\-]+)\.md$/g;
+        const postId = markdownFilename.exec(markdown)?.groups?.postId || "404";
+        return { params: { postId } };
+    });
+
     return {
-        paths: [
-            { params: { postId: 'writing-in-markdown' } }
-        ],
+        paths,
         fallback: false
     };
 }
@@ -55,9 +62,20 @@ class Home extends React.Component<IHomeProps, {}> {
     }
 
     render() {
-        let ele = compile(this.props.markdownContent) as React.Component;
+        const headEle = <Head>
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script type="text/javascript" id="MathJax-script" async
+                src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+            </script>
+            <script src="/mathJaxConfig.js"></script>
+        </Head>;
 
-        return <Paper>{ele}</Paper>
+        const articleEle = compile(this.props.markdownContent) as React.Component;
+
+        return <div>
+            {headEle}
+            <Paper>{articleEle}</Paper>
+        </div>;
     }
 
 }
