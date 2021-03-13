@@ -1,3 +1,10 @@
+---
+title = "用 Markdown 写作"
+description = "尝试也将 Markdown 加入写作方式．"
+date = "2021-03-13"
+author = "Wayne"
+---
+
 # 用 Markdown 写作
 
 *写于 2021 年 3 月 13 日：*
@@ -62,7 +69,10 @@ code {
 .article {
     p {
         img {
-            width: 100%;
+            max-width: 100%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
     }
 }
@@ -138,6 +148,77 @@ window.MathJax = { tex: { tags: 'ams' } };
 ```
 
 因为这些脚本是远程加载的，所以当网络不好的时候，数学公式也要花好处时间才能就位．
+
+## Front-Matter 怎么写？
+
+Front-Matter 在静态网站生成器的语境中主要指文章的元数据(metadata)例如：标题、摘要、时间、标签、分类和作者信息等，我主要是将 Front-Matter 嵌入在 Markdown 中，并在 Markdown 内容被解析 (parse) 前用正则表达式将其分离：
+
+![TOML格式的 Front-Matter](/writing-in-markdown/4.png)
+
+如图是 Toml 格式的 Front-Matter，正则表达式的代码：
+
+```
+import vm from 'vm';
+
+export function tomlAndMarkdownSeparator(mixedContent: string): ITomlAndMarkdown {
+    const feature = /\-\-\-\n(?<tomlContent>[\s\S]+\n)\-\-\-\n\n(?<markdownContent>[\s\S]+)/g;
+    const result = feature.exec(mixedContent);
+
+    const toml = result?.groups?.tomlContent || "";
+    const markdown = result?.groups?.markdownContent || "";
+
+    return {
+        toml, markdown
+    };
+}
+
+export function parse(tomlContent: string): IFrontMatter {
+
+    let context = {};
+    const script = new vm.Script(tomlContent);
+    vm.createContext(context);
+    script.runInContext(context);
+
+    return context as IFrontMatter;
+}
+```
+
+这样做是因为我们需要必要的元信息来做 SEO．
+
+## Markdown 怎么转成 HTML?
+
+在 React 环境下，我们指的是，怎么将 Markdown 解析成 `React.Component`:
+
+代码如下：
+
+```
+// 文件 markdowncompile.ts
+
+import React from 'react';
+import { __compile } from './markdowncompile_wrapped';
+
+export function compile(markdownContent: string): React.Component {
+    return __compile(markdownContent) as React.Component;
+}
+```
+
+以及：
+
+```
+// 文件 markdowncompile_wrapped.js
+
+import unified from 'unified'
+import parse from 'remark-parse'
+import remark2react from 'remark-react'
+
+export function __compile(markdownString) {
+    return unified()
+        .use(parse)
+        .use(remark2react)
+        .processSync(markdownString)
+        .result;
+}
+```
 
 ## 总结
 

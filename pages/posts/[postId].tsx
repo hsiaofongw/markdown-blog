@@ -6,6 +6,7 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 import { compile } from '../../helpers/markdowncompile';
 import styles from '../../styles/Post.module.scss';
 import { readdir } from 'fs/promises';
+import { tomlAndMarkdownSeparator, parse } from '../../helpers/toml';
 
 export const getStaticPaths: GetStaticPaths = async () => {
 
@@ -25,7 +26,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 
-    let markdownContent = "";
 
     if (params) {
         const { postId } = params;
@@ -34,13 +34,20 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             const fullRelPath = `${cwd}/data/markdowns/${postId}.md`;
             const fileRead = util.promisify(fs.readFile);
             
-            markdownContent = await fileRead(fullRelPath, 'utf8');
+            const markdownRaw = await fileRead(fullRelPath, 'utf8');
+            let { toml, markdown } = tomlAndMarkdownSeparator(markdownRaw);
+            let frontMatter = parse(toml);
+
+            return {
+                props: { markdown, frontMatter }
+            };
         }
     }
 
     return {
         props: {
-            markdownContent
+            markdown: "",
+            frontMatter: {}
         }
     };
 }
@@ -62,7 +69,14 @@ class Home extends React.Component<IHomeProps, {}> {
     }
 
     render() {
+        console.log("frontMatter:");
+        console.log(this.props.frontMatter);
+        const title = this.props.frontMatter?.title || "无标题";
+        const description = this.props.frontMatter?.description || "无摘要";
+
         const headEle = <Head>
+            <title>{title}</title>
+            <meta name="description" content={description} />
             <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
             <script type="text/javascript" id="MathJax-script" async
                 src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
@@ -70,7 +84,7 @@ class Home extends React.Component<IHomeProps, {}> {
             <script src="/mathJaxConfig.js"></script>
         </Head>;
 
-        const articleEle = compile(this.props.markdownContent) as React.Component;
+        const articleEle = compile(this.props.markdown) as React.Component;
 
         return <div>
             {headEle}
