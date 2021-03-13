@@ -12,8 +12,12 @@ code {
 }
 
 a {
-    color: inherit;
+    color: #387b97;
     text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 * {
