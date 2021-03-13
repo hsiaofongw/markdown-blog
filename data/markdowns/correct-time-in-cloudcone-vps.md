@@ -346,20 +346,10 @@ ntpdate -q ntpServerHostname
 
 可用来提供NTP服务和充当NTP客户端，和timesyncd类似.
 
-## 参考文献
+## 总结
 
-[1] [Time Synchronization](https://help.ubuntu.com/lts/serverguide/NTP.html)
+这篇文章介绍了一种解决问题的工作流程：
 
-[2] [Public NTP  |  Google Developers](https://developers.google.com/time)
-
-[3] [Unix time - Wikipedia](https://en.wikipedia.org/wiki/Unix_time)
-
-[4] [time - ntpdate: no server suitable for synchronization found - Ask Ubuntu](https://askubuntu.com/questions/429306/ntpdate-no-server-suitable-for-synchronization-found)
-
-[5] [pool.ntp.org: the internet cluster of ntp servers](https://www.ntppool.org/en/)
-
-[6] [Network Time Protocol - Wikipedia](https://en.wikipedia.org/wiki/Network_Time_Protocol)
-
-[7] [RFC 4330 - Simple Network Time Protocol (SNTP) Version 4 for IPv4, IPv6 and OSI](https://tools.ietf.org/html/rfc4330)
-
-[8] [RFC 5905 - Network Time Protocol Version 4: Protocol and Algorithms Specification](https://tools.ietf.org/html/rfc5905)
+```
+发现问题 -> 观察现象 -> 收集日志 -> 分析原因 -> 对症下药
+```
