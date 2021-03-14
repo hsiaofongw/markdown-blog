@@ -1,4 +1,4 @@
-import { readFile, mkdir, writeFile } from 'fs/promises';
+import { readFile, mkdir, writeFile, readdir, rm } from 'fs/promises';
 import path from 'path';
 
 async function main() {
@@ -16,22 +16,27 @@ async function main() {
     const destinations = result.map(x => `/Users/mike/test/markdown-blog/public${x}`);
 
     let map = {};
-    for (const i in fullOrigins) {
-        map[fullOrigins[i]] = destinations[i];
+    const files = await readdir(process.cwd());
+    if (files.indexOf('filesToCopy.json') === -1) {
+        for (const i in fullOrigins) {
+            map[fullOrigins[i]] = destinations[i];
+        }
+
+        await writeFile('filesToCopy.json', JSON.stringify(map));
     }
-
-    console.log(map);
-
-    fullOrigins.forEach(origin => {
-        const p = path.parse(map[origin]);
-        const dir = p.dir;
-        mkdir(dir, { recursive: true })
-        .then(x => console.log(`${dir} created.`))
-        .then(x => readFile(origin))
-        .then(x => writeFile(map[origin], x))
-        .then(x => console.log(`Copied: ${origin} to ${map[origin]}`))
-        .catch(e => console.log(e));
-    });
+    else {
+        map = JSON.parse(await readFile('filesToCopy.json', 'utf-8'));
+        fullOrigins.forEach(async function(origin) {
+            const p = path.parse(map[origin]);
+            const dir = p.dir;
+            await mkdir(dir, { recursive: true })
+            .then(x => console.log(`${dir} created.`))
+            .then(x => readFile(origin))
+            .then(x => writeFile(map[origin], x))
+            .then(x => console.log(`Copied: ${origin} to ${map[origin]}`))
+            .catch(e => console.log(e));
+        });
+    }
 }
 
 main();
