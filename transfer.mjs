@@ -26,7 +26,7 @@ async function main() {
     }
     else {
         map = JSON.parse(await readFile('filesToCopy.json', 'utf-8'));
-        fullOrigins.forEach(async function(origin) {
+        for (const origin of Object.keys(map)) {
             const p = path.parse(map[origin]);
             const dir = p.dir;
             await mkdir(dir, { recursive: true })
@@ -35,7 +35,7 @@ async function main() {
             .then(x => writeFile(map[origin], x))
             .then(x => console.log(`Copied: ${origin} to ${map[origin]}`))
             .catch(e => console.log(e));
-        });
+        }
     }
 }
 
