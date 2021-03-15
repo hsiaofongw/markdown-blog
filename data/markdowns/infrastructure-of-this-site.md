@@ -11,21 +11,85 @@ author = "Wayne"
 
 ## 概括
 
-负责 Hosting 前端页面和 Markdown 文本的是：Vercel
+**定义1**: 探索子博客系统是一个博客，它由若干个 Bulding-block 组成，正是因为它由什么什么组成，所以后面加了系统两字．
 
-负责域名解析的是：Cloudflare
+**定义2**: 一个有序四元组 \\( ( N, L, P, A ) \\) 称为是一个博客，其中 \\( N \\) 是一个字符串，它代表博客的名字，也就是站名，\\( L \\) 代表链接，主要是域名，\\( P \\) 代表 Posts, 即文章的列表，\\( A \\) 代表作者．
 
-负责在请求时生成前端页面的是：Next.js, 运行在 exploro.vercel.app
+```
+interface IArticle {
+    title: string;
+    description?: string;
+    date: number || string;
+    author: string;
+    tags?: string[];
+    category?: string;
+    content: string;
+}
 
-负责提供数据服务和 URL 动态重写服务的是：Next.js, 运行在 blog-data-nextjs.vercel.app
+interface IBlog {
+    name: string;
+    link: string;
+    posts: IArticle[];
+    author: string || IPeople;
+}
 
-负责提供 Markdown 渲染的是：Next.js, 运行在 markdown-blog-phi.vercel.app
+interface IPeople {
+    name: string;
+    email?: string;
+    gender?: string;
+    avatar?: string || Buffer || ArrayBuffer;
+}
+```
 
-负责 PDF 文件存储的是：Aliyun，并且由 blog-data-nextjs.vercel.app 提供转发服务
+**定义3**: 令：
 
-负责代码托管的是：GitHub
+```
+import posts from 'https://exploro.one/';
 
-负责持续集成和持续部署的是：Vercel
+let 探索子博客 = {
+    name: '探索子',
+    link: 'https://exploro.one',
+    posts: posts as IArticle[]
+    author: {
+        name: 'Wayne',
+        email: 'i@beyondstars.xyz'
+    } 
+};
+```
+
+**性质1**: 探索子博客系统由若干个子系统构成，它 function properly 的充分必要条件是：下列每一个子系统都 function properly: 
+
+- 负责生成前端页面的：[blog-ng-nextjs](https://github.com/hsiaofongw/blog-ng-nextjs)
+- 负责域名解析的：Cloudflare
+- 负责 URL 动态重写服务的：[blog-data-nextjs](https://github.com/hsiaofongw/blog-data-nextjs)
+- 负责提供网站元数据的：[blog-data-nextjs](https://github.com/hsiaofongw/blog-data-nextjs)
+- 负责提供 PDF 资源请求转发的：[blog-data-nextjs](https://github.com/hsiaofongw/blog-data-nextjs)
+- 负责 PDF 文件存储的：Aliyun
+- 负责代码托管的：GitHub
+- 负责持续集成和持续部署的：Vercel
+- 负责友链头像图像压缩处理的：[webimagecache](https://github.com/hsiaofongw/webimagecache)
+- 负责 Markdown Hosting 的：[markdown-blog](https://github.com/hsiaofongw/markdown-blog)
+- 负责 Markdown 渲染的：[markdown-blog](https://github.com/hsiaofongw/markdown-blog)
+- 负责数学公式渲染和标号的：MathJax
+- 负责内容分发的：Vercel
+- 负责访客流量统计的：Umami
+
+**性质2**: 该博客系统使用的普通字体是：
+
+```
+font-family: "Hiragino Sans GB", "Noto Sans SC", 
+    sans-serif, monospace, system-ui;
+```
+
+该博客使用的代码字体是：
+
+```
+font-family: Fira Code, Monaco, monospace;
+```
+
+**Remark**: 强烈推荐你安装并且使用 Fira Code 字体．
+
+**性质3**: 该博客的背景色（应用于 Markdown 阅读器）是：\#344F5B.
 
 ## 工作流程
 
