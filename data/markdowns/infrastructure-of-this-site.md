@@ -49,7 +49,7 @@ import posts from 'https://exploro.one/';
 let 探索子博客 = {
     name: '探索子',
     link: 'https://exploro.one',
-    posts: posts as IArticle[]
+    posts: posts as IArticle[],
     author: {
         name: 'Wayne',
         email: 'i@beyondstars.xyz'
