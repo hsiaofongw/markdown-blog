@@ -1,6 +1,6 @@
 ---
 title = "友链交换事项"
-description = "我们期待贵站看起来独特且有个性．"
+description = "期待贵站看起来独特有个性．"
 date = "2021-03-17"
 author = "Wayne"
 ---
