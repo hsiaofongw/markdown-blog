@@ -7,6 +7,7 @@ import { compile } from '../../helpers/markdowncompile';
 import styles from '../../styles/Post.module.scss';
 import { readdir } from 'fs/promises';
 import { tomlAndMarkdownSeparator, parse } from '../../helpers/toml';
+import { Paper } from '../../components/paper';
 
 export const getStaticPaths: GetStaticPaths = async () => {
 
@@ -50,16 +51,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             frontMatter: {}
         }
     };
-}
-
-class Paper extends React.Component<IPaperProps, {}> {
-    constructor(props: IPaperProps) {
-        super(props);
-    }
-
-    render() {
-        return <main className={styles.paper}>{this.props.children}</main>
-    }
 }
 
 class Home extends React.Component<IHomeProps, {}> {
