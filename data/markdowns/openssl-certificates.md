@@ -15,7 +15,7 @@ categories = ["概念普及"]
 
 HTTP 协议被广泛应用，例如这张网页，它实质上是字节的有限长序列，浏览器通过 HTTP 协议请求它，服务器通过 HTTP 协议返回它．
 
-HTTP协议默认传输的是明文，这意味着浏览器和服务器中间链路上的任何节点，都能看到它们之间的通信．
+HTTP 协议默认传输的是明文，这意味着浏览器和服务器中间链路上的任何节点，都能看到它们之间的通信．
 
 ![figure](/openssl-certificates/xiaoming-login-to-github.png)
 
