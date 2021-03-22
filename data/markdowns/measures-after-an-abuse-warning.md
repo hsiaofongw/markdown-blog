@@ -1,8 +1,8 @@
 ---
-title = "一次服务器被入侵的经历"
-description = "事件反思以及后续操作．"
-date = "2021-03-15"
-author = "Wayne"
+title: "一次服务器被入侵的经历"
+description: "事件反思以及后续操作．"
+date: "2021-03-15"
+author: "Wayne"
 ---
 
 # 一次服务器被入侵的经历

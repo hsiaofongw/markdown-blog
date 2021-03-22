@@ -1,10 +1,10 @@
 ---
-title = "DP: 以 House Robber 问题为例"
-date = "2020-08-25T14:54:47+08:00"
-lastmod = "2020-08-25T14:54:47+08:00"
-draft = false
-tags = ["algorithm", "dynamicprogramming"]
-categories = ["动态规划"]
+title: "DP: 以 House Robber 问题为例"
+date: "2020-08-25T14:54:47+08:00"
+lastmod: "2020-08-25T14:54:47+08:00"
+draft: false
+tags: ["algorithm", "dynamicprogramming"]
+categories: ["动态规划"]
 ---
 
 # DP: 以 House Robber 问题为例

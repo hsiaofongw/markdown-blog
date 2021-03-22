@@ -1,10 +1,10 @@
 ---
-title = "在 macOS 上释放磁盘空间的一次经历"
-date = "2020-05-11T18:31:33+08:00"
-lastmod = "2020-05-11T18:31:33+08:00"
-draft = false
-tags = ["macos","sip"]
-categories = ["经验分享"]
+title: "在 macOS 上释放磁盘空间的一次经历"
+date: "2020-05-11T18:31:33+08:00"
+lastmod: "2020-05-11T18:31:33+08:00"
+draft: false
+tags: ["macos","sip"]
+categories: ["经验分享"]
 ---
 
 # 在 macOS 上释放磁盘空间的一次经历

@@ -1,10 +1,10 @@
 ---
-title = "4Sum 问题的分支定界求解思路及其实现"
-date = "2020-08-11T19:08:47+08:00"
-lastmod = "2020-08-11T19:08:47+08:00"
-draft = false
-tags = ["leetcode", "branchandbound", "4sum", "algorithm"]
-categories = ["学习记录"]
+title: "4Sum 问题的分支定界求解思路及其实现"
+date: "2020-08-11T19:08:47+08:00"
+lastmod: "2020-08-11T19:08:47+08:00"
+draft: false
+tags: ["leetcode", "branchandbound", "4sum", "algorithm"]
+categories: ["学习记录"]
 ---
 
 # 4Sum 问题的分支定界求解思路及其实现 

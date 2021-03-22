@@ -1,10 +1,10 @@
 ---
-title = "解数独与解方程？"
-date = "2020-04-13T18:40:12+08:00"
-lastmod = "2020-04-13T18:40:12+08:00"
-draft = false
-tags = ["sudoku","math"]
-categories = ["数学应用"]
+title: "解数独与解方程？"
+date: "2020-04-13T18:40:12+08:00"
+lastmod: "2020-04-13T18:40:12+08:00"
+draft: false
+tags: ["sudoku","math"]
+categories: ["数学应用"]
 ---
 
 # 解数独与解方程？

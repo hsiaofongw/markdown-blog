@@ -1,10 +1,10 @@
 ---
-title = "8皇后问题：启发式解法"
-date = "2020-04-16T06:18:17+08:00"
-lastmod = "2020-04-16T06:18:22+08:00"
-draft = false
-tags = ["milp","math","8queens", "ga"]
-categories = ["数学应用"]
+title: "8皇后问题：启发式解法"
+date: "2020-04-16T06:18:17+08:00"
+lastmod: "2020-04-16T06:18:22+08:00"
+draft: false
+tags: ["milp","math","8queens", "ga"]
+categories: ["数学应用"]
 ---
 
 # 8 皇后问题：启发式解法

@@ -1,10 +1,10 @@
 ---
-title = "几个好用的 Linux 命令行工具推荐"
-date = "2020-04-14T21:09:35+08:00"
-lastmod = "2020-04-14T21:09:35+08:00"
-draft = false
-tags = ["linux","shell"]
-categories = ["经验分享"]
+title: "几个好用的 Linux 命令行工具推荐"
+date: "2020-04-14T21:09:35+08:00"
+lastmod: "2020-04-14T21:09:35+08:00"
+draft: false
+tags: ["linux","shell"]
+categories: ["经验分享"]
 ---
 
 # 几个好用的 Linux 命令行工具推荐

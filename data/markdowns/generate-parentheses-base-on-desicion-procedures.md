@@ -1,10 +1,10 @@
 ---
-title = "生成所有可能括号组合——可能是一种直观的解法"
-date = "2020-08-14T06:03:19+08:00"
-lastmod = "2020-08-14T06:03:19+08:00"
-draft = false
-tags = ["leetcode", "algorithm", "decisions"]
-categories = ["学习记录"]
+title: "生成所有可能括号组合——可能是一种直观的解法"
+date: "2020-08-14T06:03:19+08:00"
+lastmod: "2020-08-14T06:03:19+08:00"
+draft: false
+tags: ["leetcode", "algorithm", "decisions"]
+categories: ["学习记录"]
 ---
 
 # 生成所有可能的括号组合——可能是一种直观的解法

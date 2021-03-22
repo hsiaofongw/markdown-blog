@@ -1,10 +1,10 @@
 ---
-title = "CDN部署过程全记录：原理和实践"
-date = "2020-03-25T17:52:51+08:00"
-lastmod = "2020-03-25T17:52:51+08:00"
-draft = false
-tags = ["cdn","devops"]
-categories = ["技术交流"]
+title: "CDN部署过程全记录：原理和实践"
+date: "2020-03-25T17:52:51+08:00"
+lastmod: "2020-03-25T17:52:51+08:00"
+draft: false
+tags: ["cdn","devops"]
+categories: ["技术交流"]
 ---
 
 # CDN部署过程全记录：原理和实践

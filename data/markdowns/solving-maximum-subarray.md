@@ -1,10 +1,10 @@
 ---
-title = "解 Maximum Subarray 问题——不妨先转化之"
-date = "2020-08-23T20:46:40+08:00"
-lastmod = "2020-08-23T20:46:40+08:00"
-draft = false
-tags = ["algorithm"]
-categories = ["学习记录"]
+title: "解 Maximum Subarray 问题——不妨先转化之"
+date: "2020-08-23T20:46:40+08:00"
+lastmod: "2020-08-23T20:46:40+08:00"
+draft: false
+tags: ["algorithm"]
+categories: ["学习记录"]
 ---
 
 # 解 Maximum Subarray 问题——不妨先转化之

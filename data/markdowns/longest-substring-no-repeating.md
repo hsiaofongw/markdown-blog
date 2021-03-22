@@ -1,10 +1,10 @@
 ---
-title = "动规例题：最长无重复子串" 
-date = "2020-08-30T14:22:49+08:00"
-lastmod = "2020-08-30T14:22:49+08:00"
-draft = false
-tags = ["dynamicprogramming"]
-categories = ["学习记录"]
+title: "动规例题：最长无重复子串" 
+date: "2020-08-30T14:22:49+08:00"
+lastmod: "2020-08-30T14:22:49+08:00"
+draft: false
+tags: ["dynamicprogramming"]
+categories: ["学习记录"]
 ---
 
 # 动规例题：最长无重复子串

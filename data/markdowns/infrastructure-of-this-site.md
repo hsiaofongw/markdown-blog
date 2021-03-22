@@ -1,8 +1,8 @@
 ---
-title = "本站的基础设施以及及架构"
-description = "升级到了 Next.js 之后的主要发展．"
-date = "2021-03-15"
-author = "Wayne"
+title: "本站的基础设施以及及架构"
+description: "升级到了 Next.js 之后的主要发展．"
+date: "2021-03-15"
+author: "Wayne"
 ---
 
 # 本站的基础设施以及架构

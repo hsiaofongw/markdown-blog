@@ -6,15 +6,16 @@ interface IPaperProps {
 }
 
 interface IFrontMatter {
+    [key: string]: string;
+
     author?: string;
     title?: string;
     date?: string;
     description?: string;
 }
 
-
-interface IHomeProps {
-    markdown: string;
+interface IPostProps {
+    markdownContent: string;
     frontMatter: IFrontMatter
 }
 

@@ -1,10 +1,10 @@
 ---
-title ="修复CloudCone VPS无法自动同步时间的问题"
-date = "2020-03-18T22:04:23+08:00"
-lastmod = "2020-03-18T22:04:23+08:00"
-draft = false
-tags = ["ntp","cloudcone"]
-categories = ["经验分享"]
+title: "修复CloudCone VPS无法自动同步时间的问题"
+date: "2020-03-18T22:04:23+08:00"
+lastmod: "2020-03-18T22:04:23+08:00"
+draft: false
+tags: ["ntp","cloudcone"]
+categories: ["经验分享"]
 ---
 
 # 修复 CloudCone VPS 无法自动同步时间的问题

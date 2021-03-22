@@ -1,8 +1,8 @@
 ---
-title = "自述"
-description = "如果你希望了解的话．"
-date = "2021-03-17"
-author = "Wayne"
+title: "自述"
+description: "如果你希望了解的话．"
+date: "2021-03-17"
+author: "Wayne"
 ---
 
 # 自述

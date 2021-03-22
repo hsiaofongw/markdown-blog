@@ -1,10 +1,10 @@
 ---
-title = "符号链接和硬链接"
-date = "2020-04-01T08:27:54+08:00"
-lastmod = "2020-04-01T08:27:54+08:00"
-draft = false
-tags = ["inode", "linux", "devops"]
-categories = ["技术交流"]
+title: "符号链接和硬链接"
+date: "2020-04-01T08:27:54+08:00"
+lastmod: "2020-04-01T08:27:54+08:00"
+draft: false
+tags: ["inode", "linux", "devops"]
+categories: ["技术交流"]
 ---
 
 # 符号链接与硬链接

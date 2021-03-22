@@ -1,10 +1,10 @@
 ---
-title = "合并两个已排序数组的几种方法"
-date = "2020-08-22T18:16:52+08:00"
-lastmod = "2020-08-22T18:16:52+08:00"
-draft = false
-tags = ["algorithm", "leetcode", "array"]
-categories = ["学习记录"]
+title: "合并两个已排序数组的几种方法"
+date: "2020-08-22T18:16:52+08:00"
+lastmod: "2020-08-22T18:16:52+08:00"
+draft: false
+tags: ["algorithm", "leetcode", "array"]
+categories: ["学习记录"]
 ---
 
 # 合并两个已排序数组的几种方法

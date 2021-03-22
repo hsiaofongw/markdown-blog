@@ -1,10 +1,10 @@
 ---
-title = "traceroute 的简易版本"
-date = "2020-03-30T05:39:01+08:00"
-lastmod = "2020-03-30T05:39:01+08:00"
-draft = false
-tags = ["traceroute", "network","linux"]
-categories = ["技术交流"]
+title: "traceroute 的简易版本"
+date: "2020-03-30T05:39:01+08:00"
+lastmod: "2020-03-30T05:39:01+08:00"
+draft: false
+tags: ["traceroute", "network","linux"]
+categories: ["技术交流"]
 ---
 
 # traceroute 的简易版本

@@ -1,10 +1,10 @@
 ---
-title = "图片旋转问题"
-date = "2020-08-17T23:56:38+08:00"
-lastmod = "2020-08-17T23:56:38+08:00"
-draft = false
-tags = ["algorithm", "leetcode", "rotateimage"]
-categories = ["学习记录"]
+title: "图片旋转问题"
+date: "2020-08-17T23:56:38+08:00"
+lastmod: "2020-08-17T23:56:38+08:00"
+draft: false
+tags: ["algorithm", "leetcode", "rotateimage"]
+categories: ["学习记录"]
 ---
 
 # 图片旋转问题

@@ -3,12 +3,12 @@ import React from 'react';
 import fs from 'fs';
 import util from 'util';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import { compile } from '../../helpers/markdowncompile';
-import styles from '../../styles/Post.module.scss';
 import { readdir } from 'fs/promises';
-import { tomlAndMarkdownSeparator, parse } from '../../helpers/toml';
+import matter from 'gray-matter';
+import { markdownToReact } from '../../helpers/markdown';
 import { Paper } from '../../components/paper';
 
+// 告诉 Next.js 哪些路径需要渲染．
 export const getStaticPaths: GetStaticPaths = async () => {
 
     const markdownPath = `${process.cwd()}/data/markdowns`;
@@ -25,8 +25,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
     };
 }
 
+// 在构建期运行，读取并解析 Markdown 文件内容
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 
+    let frontMatter: IFrontMatter = {
+        author: 'unknown',
+        title: 'unknown',
+        date: 'unknown',
+        description: 'unknown'
+    };
+
+    let markdownContent: string = "# 渲染失败";
 
     if (params) {
         const { postId } = params;
@@ -36,27 +45,34 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             const fileRead = util.promisify(fs.readFile);
             
             const markdownRaw = await fileRead(fullRelPath, 'utf8');
-            let { toml, markdown } = tomlAndMarkdownSeparator(markdownRaw);
-            let frontMatter = parse(toml);
 
-            return {
-                props: { markdown, frontMatter }
-            };
+            const { data, content } = matter(markdownRaw);
+            
+            markdownContent = content;
+
+            for (const key in frontMatter) {
+                if (key in data) {
+                    frontMatter[key] = data[key];
+                }
+            }
         }
     }
 
     return {
         props: {
-            markdown: "",
-            frontMatter: {}
+            markdownContent, frontMatter
         }
     };
 }
 
-class Home extends React.Component<IHomeProps, {}> {
+class Home extends React.Component<IPostProps, { markdownNode: React.ReactNode }> {
 
-    constructor(props: IHomeProps) {
+    constructor(props: IPostProps) {
         super(props);
+
+        this.state = {
+            markdownNode: markdownToReact(this.props.markdownContent)
+        }
     }
 
     render() {
@@ -73,11 +89,9 @@ class Home extends React.Component<IHomeProps, {}> {
             <script src="/mathJaxConfig.js"></script>
         </Head>;
 
-        const articleEle = compile(this.props.markdown) as React.Component;
-
         return <div>
             {headEle}
-            <Paper>{articleEle}</Paper>
+            <Paper>{this.state.markdownNode}</Paper>
         </div>;
     }
 

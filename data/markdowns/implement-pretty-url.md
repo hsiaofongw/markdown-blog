@@ -1,8 +1,8 @@
 ---
-title = "为这个站点实现 Pretty URL"
-description = "什么是 Pretty URL? 我又怎么为这个站点实现它．"
-date = "2021-03-17"
-author = "Wayne"
+title: "为这个站点实现 Pretty URL"
+description: "什么是 Pretty URL? 我又怎么为这个站点实现它．"
+date: "2021-03-17"
+author: "Wayne"
 ---
 
 # 为这个站点实现 Pretty URL

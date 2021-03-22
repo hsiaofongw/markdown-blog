@@ -1,8 +1,8 @@
 ---
-title = "用 Markdown 写作"
-description = "尝试也将 Markdown 加入写作方式．"
-date = "2021-03-13"
-author = "Wayne"
+title: "用 Markdown 写作"
+description: "尝试也将 Markdown 加入写作方式．"
+date: "2021-03-13"
+author: "Wayne"
 ---
 
 # 用 Markdown 写作

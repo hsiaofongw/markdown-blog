@@ -1,10 +1,10 @@
 ---
-title = "在 Mathematica 中模拟魔方"
-date = "2020-05-09T14:09:17+08:00"
-lastmod = "2020-05-09T14:09:17+08:00"
-draft = false
-tags = ["mathematica","rubikscube"]
-categories = ["为了好玩"]
+title: "在 Mathematica 中模拟魔方"
+date: "2020-05-09T14:09:17+08:00"
+lastmod: "2020-05-09T14:09:17+08:00"
+draft: false
+tags: ["mathematica","rubikscube"]
+categories: ["为了好玩"]
 ---
 
 # 在 Mathematica 中模拟魔方

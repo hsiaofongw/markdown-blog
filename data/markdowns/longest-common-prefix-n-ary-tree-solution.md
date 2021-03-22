@@ -1,10 +1,10 @@
 ---
-title = "LCP 问题与数据结构"
-date = "2020-08-18T19:37:35+08:00"
-lastmod = "2020-08-18T19:37:35+08:00"
-draft = false
-tags = ["algorithm", "datastructure", "tree"]
-categories = ["学习记录"]
+title: "LCP 问题与数据结构"
+date: "2020-08-18T19:37:35+08:00"
+lastmod: "2020-08-18T19:37:35+08:00"
+draft: false
+tags: ["algorithm", "datastructure", "tree"]
+categories: ["学习记录"]
 ---
 
 # LCP 问题与数据结构

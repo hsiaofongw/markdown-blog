@@ -1,10 +1,10 @@
 ---
-title = " Linux 中的crontab命令的简单介绍及其用法"
-date = "2020-03-16T23:33:16+08:00"
-lastmod = "2020-03-16T23:33:16+08:00"
-draft = false
-tags = ["linux", "crontab"]
-categories = ["技术交流"]
+title: " Linux 中的crontab命令的简单介绍及其用法"
+date: "2020-03-16T23:33:16+08:00"
+lastmod: "2020-03-16T23:33:16+08:00"
+draft: false
+tags: ["linux", "crontab"]
+categories: ["技术交流"]
 ---
 
 #  Crontab 案例

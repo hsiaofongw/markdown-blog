@@ -1,10 +1,10 @@
 ---
-title = "HTTPS 证书：原理、签发、部署和验证"
-date = "2020-04-08T16:20:16+08:00"
-lastmod = "2020-04-08T16:20:22+08:00"
-draft = false
-tags = ["https","tls","certs"]
-categories = ["概念普及"]
+title: "HTTPS 证书：原理、签发、部署和验证"
+date: "2020-04-08T16:20:16+08:00"
+lastmod: "2020-04-08T16:20:22+08:00"
+draft: false
+tags: ["https","tls","certs"]
+categories: ["概念普及"]
 ---
 
 # HTTPS 证书：原理、签发、部署和验证
