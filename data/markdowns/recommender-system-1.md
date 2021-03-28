@@ -126,7 +126,7 @@ import numpy as np
 
 # 输入的 ratings 是一个打分矩阵，行对应用户，列对应商品．
 # 该函数找出每个用户最接近的 n 个用户．
-def n_closest_user_from_rating_matrix(ratings: csr_matrix, n: int) -> np.array:
+def n_closest_users_from_rating_matrix(ratings: csr_matrix, n: int) -> np.array:
     
     # 首先计算行和行之间的余弦
     inner_prods = rating_matrix @ (rating_matrix.T)
@@ -154,7 +154,7 @@ rating_matrix = csr_matrix(coo_matrix((rating, (userId, movieId))))
 调用函数，为每个用户找出 10 个与它最近的邻居：
 
 ```
-n_closest_user_from_rating_matrix(rating_matrix, 10)
+n_closest_users_from_rating_matrix(rating_matrix, 10)
 ```
 
 这个函数到下一次还会用到．
