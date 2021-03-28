@@ -23,7 +23,7 @@ User-based CF 通俗来说就是这样：如果用户 A 和用户 B 很相似，
 
 ## 实验环境
 
-JupyterLab 用于提供交互式编程环境 (REPL), Python 3 作为主要编程语言, Pandas 用来读入 CSV 格式的文件, Numpy 用来处理矩阵和进行矩阵运算, Scipy 用来处理稀疏矩阵 (Sparse Matrix).
+JupyterLab 用于提供交互式编程环境 (REPL), Python 3 作为主要编程语言，Pandas 用来读入 CSV 格式的文件，Numpy 用来处理矩阵和进行矩阵运算，Scipy 用来处理稀疏矩阵 (Sparse Matrix).
 
 ## 实验步骤
 
@@ -114,3 +114,47 @@ ind = np.argsort(-cosine_similarities, axis=1)[:, 0:21]
 ![figure](/recommender-system-1/5.png)
 
 这样我们就实现了 User-based CF 的第一步．
+
+## 放到一起
+
+我们现在把上面列出过的代码攒起来写成一个函数：
+
+```
+import pandas as pd
+from scipy.sparse import coo_matrix, csr_matrix
+import numpy as np
+
+# 输入的 ratings 是一个打分矩阵，行对应用户，列对应商品．
+# 该函数找出每个用户最接近的 n 个用户．
+def n_closest_user_from_rating_matrix(ratings: csr_matrix, n: int) -> np.array:
+    
+    # 首先计算行和行之间的余弦
+    inner_prods = rating_matrix @ (rating_matrix.T)
+    norms = np.sqrt(np.diag(inner_prods.toarray()))
+    norm_prods = np.atleast_2d(norms).T @ np.atleast_2d(norms)
+    cosine_similarities = inner_prods / norm_prods
+    
+    # 然后比较相似度并排序
+    ind = np.argsort(-cosine_similarities, axis=1)[:, 0:(n+1)]
+
+    return np.array(ind)
+```
+
+读入文件，从文件构造出 CSR 格式的打分矩阵：
+
+```
+ratings = pd.read_csv('ml-latest-small/ratings.csv')
+
+userId = ratings.iloc[:,0].to_numpy() - 1
+movieId = ratings.iloc[:,1].to_numpy() - 1
+rating = ratings.iloc[:,2].to_numpy()
+rating_matrix = csr_matrix(coo_matrix((rating, (userId, movieId))))
+```
+
+调用函数，为每个用户找出 10 个与它最近的邻居：
+
+```
+n_closest_user_from_rating_matrix(rating_matrix, 10)
+```
+
+这个函数到下一次还会用到．
