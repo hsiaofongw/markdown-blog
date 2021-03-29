@@ -5,7 +5,7 @@ date: "2021-03-29"
 author: "Wayne"
 ---
 
-# 推荐系统初探（二）：进行推荐并且评估模型的性能
+进行推荐并且评估模型的性能
 
 *写于 2021 年 3 月 29 日：*
 
@@ -115,7 +115,7 @@ test_set = ratings.iloc[n_training:, ]
 # 计算行和行之间的余弦
 def cosine_similarities(x: csr_matrix) -> np.matrix:
     
-    inner_prods = rating_matrix @ (rating_matrix.T)
+    inner_prods = x @ (x.T)
     norms = np.sqrt(np.diag(inner_prods.toarray()))
     norm_prods = np.atleast_2d(norms).T @ np.atleast_2d(norms)
     return inner_prods / norm_prods
