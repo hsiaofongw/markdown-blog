@@ -129,7 +129,7 @@ import numpy as np
 def n_closest_users_from_rating_matrix(ratings: csr_matrix, n: int) -> np.array:
     
     # 首先计算行和行之间的余弦
-    inner_prods = rating_matrix @ (rating_matrix.T)
+    inner_prods = ratings @ (ratings.T)
     norms = np.sqrt(np.diag(inner_prods.toarray()))
     norm_prods = np.atleast_2d(norms).T @ np.atleast_2d(norms)
     cosine_similarities = inner_prods / norm_prods
