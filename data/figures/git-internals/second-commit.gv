@@ -1,0 +1,34 @@
+digraph structs {
+    rankdir=LR;
+    node [shape=record];
+
+    // struct1 [label="<f0> left|<f1> mid&#92; dle|<f2> right"];
+    // struct2 [label="<f0> one|<f1> two"];
+    // struct3 [label="hello&#92;nworld |{ b |{c|<here> d|e}| f}| g | h"];
+    // struct1:f1 -> struct2:f0;
+    // struct1:f2 -> struct3:here;
+
+    head [label="HEAD"];
+    master [label="master"];
+    commit1 [label="<sha1> 403e8 | <type> commit"];
+    commit2 [label="<sha1> 2edd7 | <type> commit"];
+    tree1 [label="<sha1> 0c6e5 | <type> tree"];
+    tree2 [label="<sha1> 8dc01 | <type> tree"];
+    blob1 [label="<sha1> ed142 | <type> blob"];
+
+    blob2 [label="<sha1> fa49b | <type> blob"];
+    tree3 [label="<sha1> cc30d | <type> tree"];
+    blob3 [label="<sha1> 6d746 | <type> blob"];
+
+    head -> master -> commit2;
+    commit2 -> commit1;
+    commit2 -> tree2;
+
+    tree2 -> blob1;
+    tree2 -> blob2;
+    tree2 -> tree3;
+
+    tree3 -> blob3;
+
+    commit1 -> tree1 -> blob1;
+}

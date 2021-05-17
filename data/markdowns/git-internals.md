@@ -442,3 +442,113 @@ cat .git/HEAD
 ```
 ref: refs/heads/master
 ```
+
+然后我们查看：
+
+```
+git cat-file -p refs/heads/master
+```
+
+输出为：
+
+```
+tree 8dc01d6ddd6ff4c1e9d9263a7943416c7adfc503
+parent 403e8a29747c43ce129b22a6bc64a00475763107
+author hsiaofongw <hsiaofong.w@gmail.com> 1621277571 +0800
+committer hsiaofongw <hsiaofong.w@gmail.com> 1621277571 +0800
+
+Second commit
+```
+
+然后我们查看：
+
+```
+git cat-file -p 8dc01d6ddd6ff4c1e9d9263a7943416c7adfc503
+```
+
+输出为：
+
+```
+100644 blob ed14234311fa7ffdb95b1d40b4619bf206707d85	a.txt
+100644 blob fa49b077972391ad58037050f2a75f74e3671e92	b.txt
+040000 tree cc30d8487c54051c41dcc231461b3b59cffdcb8c	foo
+```
+
+然后我们查看：
+
+```
+git cat-file -p cc30d8487c54051c41dcc231461b3b59cffdcb8c
+```
+
+输出为：
+
+```
+100644 blob 6d7462eed29047e69a3f75f9729bd99bc61f9292	bar.txt
+```
+
+这下我们就清楚了：
+
+![figure](/git-internals/second-commit.png)
+
+## 一个有趣的问题
+
+我们看到第二个提交 2edd7 指向 8dc01 这棵树，8dc01 这棵树指向 ed142 也就是那个 a.txt, 与此同时第一个提交也间接地指向 ed142 也就是 a.txt，万一我们修改 a.txt 再提交会怎样呢？
+
+```
+echo "editing" >> a.txt
+git add a.txt
+git commit
+```
+
+我们再来看 HEAD:
+
+```
+cat .git/HEAD
+```
+
+显然没变：
+
+```
+ref: refs/heads/master
+```
+
+再看 master:
+
+```
+git cat-file -p master
+```
+
+输出为：
+
+```
+tree b6eaace9a0957d121f139de0ed85dfffcc887871
+parent 2edd7f5c1072ff61990a5771b1a9028c8cf2e599
+author hsiaofongw <hsiaofong.w@gmail.com> 1621278774 +0800
+committer hsiaofongw <hsiaofong.w@gmail.com> 1621278774 +0800
+
+修改 a.txt
+```
+
+这其中的 2edd7 正是第二个提交也就是上一个提交，再看 b6eaa 这颗新建的树：
+
+```
+git cat-file -p b6eaa
+```
+
+输出为：
+
+```
+100644 blob 56863b2f5fc3be4167e056610934744850660bbb	a.txt
+100644 blob fa49b077972391ad58037050f2a75f74e3671e92	b.txt
+040000 tree cc30d8487c54051c41dcc231461b3b59cffdcb8c	foo
+```
+
+画出来就是：
+
+![figure](/git-internals/third-commit.png)
+
+由此我们看出来，修改后的 a.txt 被放到了一个新的 blob 里面去了．
+
+## 结论
+
+当提交时，Git 保存的是当前时刻的一个快照，而不是当前时刻和上一时刻的差别，每一个 commit 都对应着一个完整的状态以及上一次的提交，理论上来说，如果我们有足够频繁的提交，我们理论上可以恢复到过去的任何状态．
